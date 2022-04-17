@@ -1,2 +1,0 @@
-# PlayTab
- A browser extension
