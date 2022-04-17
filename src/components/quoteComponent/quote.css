@@ -1,0 +1,11 @@
+.quote-author{
+    font-weight: 500;
+    font-style: italic;
+}
+
+.quote-container{
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+}
