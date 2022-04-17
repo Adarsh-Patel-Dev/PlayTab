@@ -16,6 +16,7 @@ body{
   background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 button{
@@ -68,7 +69,7 @@ input:focus{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  height: 100vh;
   gap: 1rem;
 }
 
@@ -176,7 +177,7 @@ input:focus{
   font-weight: 200;
 }
 
-.focuscontainer{
+.focus-container{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -193,4 +194,12 @@ input:focus{
 .para-focus{
   font-size: 2rem;
   font-weight: 300;
+}
+
+.home{
+  height: 76vh;
+}
+
+.main{
+  height: 95vh;
 }

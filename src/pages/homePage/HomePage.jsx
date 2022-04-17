@@ -1,24 +1,24 @@
 
 import { React, useState} from 'react'
 import { Clock, Quote} from '../../components'
-// import Quote from '../../components/quoteComponent/Quote'
+import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
     const name = localStorage.getItem('userName')
     const [ focus, setFocus ] = useState("")
     const [ display, setDisplay ] = useState("block")
-    const [ display1, setDisplay1 ] = useState("none")
 
-   
+    const navigate = useNavigate();
+    const myfocus = localStorage.getItem('focus');
     function keyHandler(e){
         if(e.key === 'Enter'){
             localStorage.setItem('focus', focus)
             setDisplay("none")
-            setDisplay1("flex")
+            navigate('/main')
         }
     }
   return (
-    <div className='main-container'>
+    <div className='main-container home'>
     
         <Clock/>
         <h1 className='heading'>Good Evening, {name}.</h1>
@@ -28,13 +28,9 @@ function HomePage() {
         <input 
         onKeyPress={keyHandler} 
         onChange={(e) => setFocus(e.target.value)}
-        type="text" className='input-container-focus' placeholder=""/>
+        type="text" className='input-container-focus' placeholder="" required/>
         </div>
 
-        <div className='focus-container' style={{display:display1}}>
-        <input type="checkbox" className='checkbox' placeholder=""/>
-        <p className='para-focus'> {localStorage.getItem('focus')}</p>
-        </div>
         <Quote/>
     </div>
   )
