@@ -1,8 +1,7 @@
 
 import { React, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Quote from '../../components/quoteComponent/Quote'
-
+import { Quote} from '../../components'
 
 function LandingPage() {
   const [name, setName] = useState('')
@@ -22,4 +21,4 @@ function LandingPage() {
   )
 }
 
-export default LandingPage
+export { LandingPage }

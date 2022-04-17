@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Clock from '../../components/clock/Clock'
+import { Clock } from '../../components'
 
 function MainPage() {
     const myfocus = localStorage.getItem('focus');
@@ -16,4 +16,4 @@ function MainPage() {
   )
 }
 
-export default MainPage
+export { MainPage }

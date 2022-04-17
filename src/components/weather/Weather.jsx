@@ -24,7 +24,6 @@ function Weather() {
   }
 
   const handleChangeInput = (e) => {
-    console.log("value", e.target.value)
     setInputCity(e.target.value)
 }
 
@@ -68,4 +67,4 @@ const handleSearch = () => {
   );
 }
 
-export default Weather
+export  { Weather }

@@ -10,7 +10,6 @@ function Quote() {
         fetch('https://api.quotable.io/random')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setQuote(data.content)
             setAuthor(data.author)
         });
@@ -30,4 +29,4 @@ function Quote() {
   )
 }
 
-export default Quote
+export { Quote }

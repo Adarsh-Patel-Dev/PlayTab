@@ -1,7 +1,7 @@
 
 import { React, useState} from 'react'
-import Clock from '../../components/clock/Clock'
-import Quote from '../../components/quoteComponent/Quote'
+import { Clock, Quote} from '../../components'
+// import Quote from '../../components/quoteComponent/Quote'
 
 function HomePage() {
     const name = localStorage.getItem('userName')
@@ -40,4 +40,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export { HomePage }
