@@ -16,7 +16,6 @@ function Weather() {
     const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + mycity + "&appid=" + apiKey
     axios.get(apiURL)
     .then((res) => {
-      console.log("response", res.data) 
       setData(res.data)
     }).catch((err) => {
       console.log("err", err)

@@ -10,7 +10,6 @@ function MainPage() {
     if(check){
       setCheck(false)
       setStyle('line-through')
-      console.log(check)
     } else {
       setStyle('none')
       setCheck(true)

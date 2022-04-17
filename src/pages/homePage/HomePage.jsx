@@ -2,13 +2,11 @@
 import { React, useState} from 'react'
 import { Clock, Quote} from '../../components'
 import { useNavigate } from 'react-router-dom'
-// import Quote from '../../components/quoteComponent/Quote'
 
 function HomePage() {
     const name = localStorage.getItem('userName')
     const [ focus, setFocus ] = useState("")
     const [ display, setDisplay ] = useState("block")
-    const [ display1, setDisplay1 ] = useState("none")
 
     const navigate = useNavigate();
     const myfocus = localStorage.getItem('focus');
@@ -16,7 +14,6 @@ function HomePage() {
         if(e.key === 'Enter'){
             localStorage.setItem('focus', focus)
             setDisplay("none")
-            setDisplay1("flex")
             navigate('/main')
         }
     }
