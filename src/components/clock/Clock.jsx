@@ -1,21 +1,27 @@
- 
- import { React, useState} from 'react'
- 
-  function Clock() {
-     const time = new Date().toLocaleTimeString().match(/\d{2}:\d{2}|[AMP]+/g).join(' ');
-     const [currentTime, setCurrentTime] = useState(time)
+import { React } from "react";
 
-     const updatedTime = () => {
-         let time = new Date().toLocaleTimeString();
-         setCurrentTime(time);
-     }
-     setInterval(updatedTime, 1000);
-   return (
-     <div className='time-container'>
-        {time}
-     </div>
-   )
- }
+function Clock() {
+  const updatedTime = () => {
+    return new Date().toLocaleTimeString(navigator.language, {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+  setInterval(updatedTime, 1000);
+  const time = updatedTime();
+  const hour = new Date().getHours();
+  const greeting =
+    "Good " + (hour < 12 ? "Morning" : hour < 18 ? "Afternoon" : "Evening");
+  const user = localStorage.getItem("userName");
 
+  return (
+    <div className="time-container">
+      {time}
+      <h1 className="heading">
+        {greeting}, {user}.
+      </h1>
+    </div>
+  );
+}
 
- export { Clock }
+export { Clock };
