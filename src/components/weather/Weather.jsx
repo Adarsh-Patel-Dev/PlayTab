@@ -44,7 +44,7 @@ function Weather() {
     <div className="weather-container">
       {!mycity && (
         <div className="weather-input" style={{ display: display }}>
-          <p className="">What is your current location</p>
+          <p className="weather-input-heading">What is your current location</p>
           <input
             type="text"
             className="input-container "
