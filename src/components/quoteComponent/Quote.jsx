@@ -1,18 +1,25 @@
 
 import { React , useState, useEffect } from 'react'
+import axios from "axios";
 import './quote.css'
 
 function Quote() {
     const [quote, setQuote] = useState('')
     const [author, setAuthor] = useState('')
 
-    const getQuote = () => {
-        fetch('https://api.quotable.io/random')
-        .then(res => res.json())
-        .then(data => {
-            setQuote(data.content)
-            setAuthor(data.author)
-        });
+    const getQuote = async () => {
+       try {
+            const response = await axios({
+            method: "GET",
+            url: "https://api.quotable.io/random"
+        })
+        if(response.status === 200 ){
+            setQuote(response.data.content)
+            setAuthor(response.data.author)
+        }}
+        catch(error){
+            console.log("Error",error)
+        }
     };
 
     useEffect(() => {
