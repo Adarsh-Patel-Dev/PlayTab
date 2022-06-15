@@ -1,7 +1,8 @@
-import { FaRegEdit, FaRegWindowClose } from "react-icons/fa";
+import { FaRegEdit, FaRegWindowClose, } from "react-icons/fa";
 import { React, useState } from "react";
 import { Clock, Quote } from "../../components";
 import { useNavigate } from "react-router-dom";
+import { Todo } from "../../components/todo/Todo";
 
 function MainPage() {
   const [style, setStyle] = useState("none");
@@ -43,6 +44,7 @@ function MainPage() {
         Well done🤓 <em>{user}</em>
       </p>
       <Quote />
+      <Todo/>
     </div>
   );
 }
