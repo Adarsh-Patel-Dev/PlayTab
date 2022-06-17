@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 import { MdClose, MdKeyboardArrowDown } from "react-icons/md";
 
 function Todo() {
@@ -6,16 +7,17 @@ function Todo() {
   const [todo, setTodo] = useState([]);
   const [display, setDisplay] = useState(false);
   const [display2, setDisplay2] = useState(false);
-  const [style, setStyle] = useState(false);
-  const [check, setCheck ] = useState(false);
-
-  
 
   const addTodo = (e) => {
-      e.preventDefault();
-    input ? setTodo([...todo, input]) : "";
+    e.preventDefault();
+    input.length &&
+      setTodo((prev) => [
+        ...prev,
+        { data: input, isDone: false, inputId: uuid() },
+      ]);
     setInput("");
   };
+
   const deleteTodo = (id) => {
     const updatedTodo = todo.filter((todo, index) => {
       return index !== id;
@@ -26,12 +28,17 @@ function Todo() {
     setDisplay((display) => !display);
   };
 
-  const todoHandler = (id) => {
-      const checkedTodo = todo.filter((todo,index)=>{
-          return index!==id
+  const todoHandler = (item) => {
+    setTodo((todos) =>
+      todos.map((todo) => {
+        return todo.inputId === item.inputId
+          ? { ...todo, isDone: !todo.isDone }
+          : todo;
       })
-    setStyle((style) => !style);
+    );
+    setDisplay2((prev) => !prev);
   };
+
   return (
     <>
       <button onClick={toggleTodo} className="toggle-todo-btn">
@@ -46,17 +53,18 @@ function Todo() {
         </span>
         <h3>Todo</h3>
         <div style={{ opacity: display2 ? 1 : 0 }}>
-        <form 
-        onPointerLeave={()=>setDisplay2(false)}
-        onPointerEnter={() => setDisplay2(true)}
-        onSubmit={addTodo}>
-          <input
-            className="todo-input"
-            onChange={(e) => setInput(e.target.value)}
+          <form
+            onPointerLeave={() => setDisplay2(false)}
             onPointerEnter={() => setDisplay2(true)}
-            value={input}
-            placeholder="Add todo here..."
-          />
+            onSubmit={addTodo}
+          >
+            <input
+              className="todo-input"
+              onChange={(e) => setInput(e.target.value)}
+              onPointerEnter={() => setDisplay2(true)}
+              value={input}
+              placeholder="Add todo here..."
+            />
           </form>
         </div>
 
@@ -65,18 +73,18 @@ function Todo() {
             return (
               <div className="todo-list" key={index}>
                 <input
-                  onChange={(e)=>e.target.checked?todoHandler(index):""}
+                  onChange={() => todoHandler(item)}
                   type="checkbox"
-                //   checked={check}
+                  checked={item?.isDone}
                   className="todo-checkbox"
                 />
                 <p
                   style={{
-                    textDecorationLine: style ? "line-through" : "none",
-                    color: style ? "gray" : "white"
+                    textDecorationLine: item?.isDone ? "line-through" : "none",
+                    color: item?.isDone ? "gray" : "white",
                   }}
                 >
-                  {item}
+                  {item.data}
                 </p>
                 <i onClick={() => deleteTodo(index)}>
                   <MdClose />
