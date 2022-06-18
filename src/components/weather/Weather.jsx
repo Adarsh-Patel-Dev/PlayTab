@@ -44,10 +44,11 @@ function Weather() {
     <div className="weather-container">
       {!mycity && (
         <div className="weather-input" style={{ display: display }}>
-          <p className="weather-input-heading">What is your current location</p>
+          <p className="weather-input-heading">Add your location</p>
           <input
             type="text"
-            className="input-container "
+            className="input-container"
+            placeholder="Add Loaction"
             value={inputCity}
             onChange={(e) => setInputCity(e.target.value)}
           />
@@ -56,7 +57,7 @@ function Weather() {
             type="button"
             onClick={handleSearch}
           >
-            Search
+            Add
           </button>
         </div>
       )}

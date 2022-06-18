@@ -7,6 +7,7 @@ function Todo() {
   const [todo, setTodo] = useState([]);
   const [display, setDisplay] = useState(false);
   const [display2, setDisplay2] = useState(false);
+  console.log("helo")
 
   const addTodo = (e) => {
     e.preventDefault();

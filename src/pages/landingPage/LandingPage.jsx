@@ -13,9 +13,11 @@ function LandingPage() {
     onChange={(e) => setName(e.target.value)}
     value={name}
     type="text"  placeholder=""/>
-    <NavLink to ='/home' >
+    { name &&
+      <NavLink to ='/home' >
       <button className='btn'>Continue</button>
       </NavLink>
+      }
       <Quote/>
     </div>
   )
