@@ -14,7 +14,7 @@ function LandingPage() {
     value={name}
     type="text"  placeholder=""/>
     { name &&
-      <NavLink to ='/home' >
+      <NavLink to ='/main' >
       <button className='btn'>Continue</button>
       </NavLink>
       }
